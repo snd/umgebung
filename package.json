@@ -42,7 +42,7 @@
     "nodeunit": "0.9.1",
     "coffee-script": "1.9.2"
   },
-  "main": "lib/env",
+  "main": "lib/umgebung",
   "scripts": {
     "compile": "coffee --bare --compile --output lib src",
     "prepublish": "npm run compile",
