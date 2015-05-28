@@ -67,16 +67,8 @@ optionsToConfig = (options) ->
 
   config.env = options.env or process.env
 
-  config.prefixWordArray =
-    if options.prefix?
-      helfer.splitCamelcase options.prefix
-    else
-      ['env']
-  config.maybePrefixWordArray =
-    if options.maybePrefix?
-      helfer.splitCamelcase options.maybePrefix
-    else
-      ['maybe']
+  config.prefixWordArray = helfer.splitCamelcase (options.prefix or 'env')
+  config.maybePrefixWordArray = helfer.splitCamelcase (options.maybePrefix or 'maybe')
 
   config.typeHandlers = {}
   Object.keys(typeHandlers).forEach (key) ->
