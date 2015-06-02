@@ -24,8 +24,8 @@ typeHandlers =
       throw new Error "env var #{parsed.envVarName} must be json. syntax error `#{e.message}`"
     result
 
-parse = (config, name) ->
-  restWords = helfer.splitCamelcase name
+parse = (config, key) ->
+  restWords = helfer.splitCamelcase key
 
   maybe = 0 is helfer.findIndexWhereSequence restWords, config.maybePrefixWordArray
 
@@ -87,12 +87,12 @@ optionsToConfig = (options) ->
 configure = (options = {}) ->
   config = optionsToConfig options
 
-  return (name) ->
-    if name is config.envDependencyName
+  return (key) ->
+    if key is config.envDependencyName
       # return a factory that resolves to the env
       return -> config.env
 
-    parsed = parse config, name
+    parsed = parse config, key
 
     # we cant do anything
     unless parsed?
