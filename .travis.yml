@@ -4,4 +4,4 @@ node_js:
   - "iojs"
 script: npm test
 env:
-  - PORT=8080 ENABLE_ETAGS=true DATABASE_URL="postgres://localhost:5432/my_database" COMMISSION=0.1 API_CREDENTIALS="{\"user\": \"foo\", \"password\": \"bar\"}"
+  - PORT=8080 ENABLE_ETAGS=true DATABASE_URL="postgres://localhost:5432/my_database" COMMISSION=0.1
