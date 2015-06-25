@@ -38,9 +38,9 @@
     "helfer": "0.1.0"
   },
   "devDependencies": {
-    "hinoki": "0.3.0-beta.17",
+    "hinoki": "1.0.0-rc.1",
     "nodeunit": "0.9.1",
-    "coffee-script": "1.9.2"
+    "coffee-script": "1.9.3"
   },
   "main": "lib/umgebung",
   "scripts": {
