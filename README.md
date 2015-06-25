@@ -5,17 +5,21 @@
 [![Dependencies](https://david-dm.org/snd/umgebung.svg)](https://david-dm.org/snd/umgebung)
 
 <!--
-write a description that doesn't include hinoki
+reads environment variables from strings that describe them.
+strings like `envIntPort`, `envBoolEnableEtags,
+  envStringDatabaseUrl,
 -->
 
-**a [hinoki](https://github.com/snd/hinoki) source for environment variables**
+**[hinoki](https://github.com/snd/hinoki)
+[source](https://github.com/snd/hinoki#sources-and-factories)
+for [environment variables](http://12factor.net/config)**
 
-just from the dependency name
-
-used by [fragments](https://github.com/snd/fragments).
+<!--
+umgebung is used by [fragments](https://github.com/snd/fragments).
+-->
 
 ```
-npm install url-pattern
+npm install umgebung
 ```
 
 <!--
@@ -26,7 +30,7 @@ a source is simply a function that takes a name and returns a factory.
 a factory 
 -->
 
-provided these [env vars](.env) are set in your shell:
+provided these [envvars](.env) are set in your shell:
 
 ``` bash
 PORT=8080
@@ -38,7 +42,7 @@ API_CREDENTIALS='{"user": "foo", "password": "bar"}'
 
 then with [umgebung](https://github.com/snd/umgebung) and the
 [hinoki](https://github.com/snd/hinoki) dependency injection system you can
-ask for env-vars by their name in your code:
+ask for envvars by their name in your code:
 
 ``` javascript
 var hinoki = require('hinoki');
@@ -72,17 +76,24 @@ hinoki(umgebung, function(
 });
 ```
 
+<!--
 you get the idea:
+-->
 
 [umgebung](https://github.com/snd/umgebung) parses
-type and env-var name from dependency-names (function arguments), looks them up on `process.env`
+type and envvar name from dependency-names (function arguments), looks them up on `process.env`
 and converts them to the specified type.
 
-unless names start with `maybe` it throws an error if no such env-var is present or it is blank.
-types `Int`, `Bool`, `Float` and `Json` throw if the env-var can't be parsed.
+unless names start with `maybe` an error is thrown if no such envvar is
+present or it is blank.
 
-what comes after the the type is converted from camelcase to underscore-delimited-uppercase
+types `Int`, `Bool`, `Float` and `Json` throw if the envvar
+can't be converted into the type.
+
+all that comes after the type is converted from camelcase to underscore-delimited-uppercase
 and looked up on `process.env`.
+
+---
 
 you can add your own types, change the `env` prefix and much more:
 
