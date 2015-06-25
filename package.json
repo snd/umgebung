@@ -1,7 +1,7 @@
 {
   "name": "umgebung",
   "version": "0.1.0",
-  "description": "a hinoki source for environment variables",
+  "description": "hinoki source for environment variables",
   "keywords": [
     "env",
     "envvar",
